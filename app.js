@@ -36,7 +36,7 @@ async function starter() {
     if (db) {
       console.log('connected to database successfully...');
     }
-    app.listen(port, console.log(`app listening on port ${port}`));
+    app.listen(port, ()=>console.log(`app listening on port ${port}`));
   } catch (error) {
     console.log(error);
   }
