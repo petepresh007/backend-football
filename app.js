@@ -12,6 +12,8 @@ const cors = require("cors");
 const adminRouter = require("./routers/admin");
 const footballRouter = require("./routers/football");
 const writeUp = require("./routers/landing");
+mongoose.set('strictQuery', false);
+
 
 app.use(express.json());
 app.use(cooker_parser());
