@@ -82,13 +82,7 @@ const persistLogin = (req, res) => {
   }
 };
 
-// const logoutAdmin = (req, res) => {
-//   res.cookie('adminToken', '').json(true);
-// };
 
-// const logoutAdmin = (req, res) => {
-//   res.clearCookie('adminToken').json(true);
-// };
 const logoutAdmin = (req, res) => {
   res.clearCookie('adminToken', { httpOnly: true, sameSite: 'none', secure: true })
     .json(true);

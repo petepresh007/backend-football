@@ -13,6 +13,7 @@ const cors = require("cors");
 const adminRouter = require("./routers/admin");
 const footballRouter = require("./routers/football");
 const writeUp = require("./routers/landing");
+const bet = require("./routers/bettips");
 mongoose.set('strictQuery', false);
 
 
@@ -33,6 +34,8 @@ app.use(cors({
 app.use('/api/v1/admin', adminRouter);
 app.use("/api/v1/football", footballRouter);
 app.use("/api/v1/landing", writeUp);
+app.use("/api/v1/football", footballRouter);
+app.use("/api/v1/bet", bet)
 
 app.use(notFoundPage)
 app.use(errorHandler);
@@ -44,7 +47,7 @@ async function starter() {
     if (db) {
       console.log('connected to database successfully...');
     }
-    app.listen(port, ()=>console.log(`app listening on port ${port}`));
+    app.listen(port, () => console.log(`app listening on port ${port}`));
   } catch (error) {
     console.log(error);
   }
