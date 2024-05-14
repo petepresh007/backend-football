@@ -3,6 +3,7 @@ const Admin = require('../model/admin');
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 
+//login for creating admin
 const createAdmin = async (req, res) => {
   const { username, email, password } = req.body;
   if (!username || !email || !password) {
@@ -12,7 +13,8 @@ const createAdmin = async (req, res) => {
   if (existingUser) {
     throw new ConflictError('admin already exists...');
   }
-
+  
+  //harsh password with bcrypt
   const harshedPassword = await bcrypt.hash(password, 10);
 
   const createAdmin = new Admin({
@@ -82,14 +84,14 @@ const persistLogin = (req, res) => {
   }
 };
 
-
+/**ADMIN LOGOUT FUNCTIONAITY */
 const logoutAdmin = (req, res) => {
   res.clearCookie('adminToken', { httpOnly: true, sameSite: 'none', secure: true })
     .json(true);
 };
 
 
-
+//export functions
 module.exports = {
   loginAdmin,
   createAdmin,

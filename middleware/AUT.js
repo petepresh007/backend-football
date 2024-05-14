@@ -1,6 +1,7 @@
 const JWT = require("jsonwebtoken");
 const { NotAuthorizedError } = require("../errors");
 
+//function to authenticate user token
 const auth = (req, res, next) => {
     const { adminToken } = req.cookies;
     try {

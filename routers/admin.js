@@ -1,3 +1,4 @@
+//express router
 const express = require("express");
 const router = express.Router();
 const { createAdmin, loginAdmin, persistLogin, logoutAdmin } = require("../controllers/admin");

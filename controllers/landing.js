@@ -6,7 +6,7 @@ const fs = require("fs");
 const { deleteFile } = require("../middleware/deleteFile");
 
 
-
+//creating a landing page
 const createLanding = async (req, res) => {
     const admin = await Admin.findById(req.admin.id);
     if (!admin) {
@@ -46,6 +46,8 @@ const createLanding = async (req, res) => {
     }
 }
 
+
+//get all writeups
 const getAllWriteUp = async (req, res) => {
     const getAll = await Landing.find({}).sort({ createdAt: -1 }).select("-__v");
     if (getAll) {

@@ -1,8 +1,4 @@
 const errorHandler = (err, req, res, next) => {
-    // if(err instanceof CustomApiError){
-    //     return res.status(err.statuscodes).json({ msg: err.message })
-    // }
-
     //customError object
     const CustomError = {
         statuscodes: err.statusCode || 500,

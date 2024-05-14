@@ -6,7 +6,8 @@ const path = require("path");
 const fs = require("fs");
 
 
-
+//create bet
+//request and response parameters for res and req 
 const createBet = async (req, res) => {
     const { title, tips } = req.body;
     if (!title || !tips) {
@@ -49,7 +50,7 @@ const createBet = async (req, res) => {
     }
 }
 
-
+//get all bet
 const getAllBet = async (req, res) => {
     const limit = parseInt(req.query.limit);
     const allBet = await Bet.find({}).select("-__v").sort({ createdAt: -1 }).limit(limit);

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+
+//landing page schema
 const landingSchema = new mongoose.Schema({
     file: String,
     writeup: {

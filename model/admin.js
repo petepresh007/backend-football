@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+//admin schema
 const adminSchema = new Schema({
   username: {
     type: String,

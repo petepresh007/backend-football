@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//football schema
 const footballSchema = new mongoose.Schema({
   title: {
     type: String,

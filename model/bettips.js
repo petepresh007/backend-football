@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//bet schema
 const betShema = new mongoose.Schema({
     title:{
         type: String,

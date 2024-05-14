@@ -5,7 +5,7 @@ const path = require("path");
 const { deleteFile } = require("../middleware/deleteFile");
 const fs = require("fs");
 
-
+//a function to create football news
 const createFootball = async (req, res) => {
     const admin = await Admin.findById(req.admin.id);
     if (!admin) {
@@ -64,8 +64,9 @@ const createFootball = async (req, res) => {
     }
 }
 
+
+//a function to get all football news
 const getAllFootball = async (req, res) => {
-    // const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const limit = parseInt(req.query.limit);
     const getFootball = await Football.find({}).select("-__v").sort({ createdAt: -1 }).limit(limit);
     if (getFootball) {
@@ -81,7 +82,7 @@ const getAllFootball = async (req, res) => {
     }
 }
 
-
+//a function to get a single football news
 const getSingleFootball = async (req, res) => {
     const { footballID } = req.params;
     const getSingle = await Football.findById(footballID).select("-__v");
@@ -98,6 +99,7 @@ const getSingleFootball = async (req, res) => {
     }
 }
 
+//a function to delete a football news
 const adminDeleteFootball = async (req, res) => {
     const { footballID } = req.params;
     const football = await Football.findById(footballID)
@@ -135,6 +137,8 @@ const adminDeleteFootball = async (req, res) => {
     }
 }
 
+
+//a function to update a football news
 const adminUpdateFootball = async (req, res) => {
     const admin = await Admin.findById(req.admin.id);
     const { footballID } = req.params;
@@ -190,6 +194,7 @@ const adminUpdateFootball = async (req, res) => {
     }
 }
 
+//a function to get all sorted football news with no limit
 const getAllFootballNews = async (req, res) => {
     const getFootball = await Football.find({ category: "News" }).select("-__v").sort({ createdAt: -1 });
     if (getFootball) {
@@ -205,9 +210,8 @@ const getAllFootballNews = async (req, res) => {
     }
 }
 
-
+//get all epl news
 const getAllFootballEPL = async (req, res) => {
-    //const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const limit = parseInt(req.query.limit)
     const getFootball = await Football.find({ category: "EPL" })
         .select("-__v")
@@ -227,9 +231,8 @@ const getAllFootballEPL = async (req, res) => {
     }
 }
 
-
+//get all laliga news
 const getAllFootballLaliga = async (req, res) => {
-    //const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const limit = parseInt(req.query.limit);
     const getFootball = await Football.find({ category: "Laliga" })
         .select("-__v")
@@ -249,8 +252,8 @@ const getAllFootballLaliga = async (req, res) => {
     }
 }
 
+//get all bundesliga news
 const getAllFootballBundesliga = async (req, res) => {
-    //const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const limit = parseInt(req.query.limit);
     const getFootball = await Football.find({ category: "Bundesliga" })
         .select("-__v")
@@ -270,10 +273,9 @@ const getAllFootballBundesliga = async (req, res) => {
     }
 }
 
-
+//get all ucl news
 const getAllFootballUCL = async (req, res) => {
     const limit = parseInt(req.query.limit);
-    //const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const getFootball = await Football.find({ category: "UCL" })
         .select("-__v")
         .sort({ createdAt: -1 })
@@ -292,9 +294,9 @@ const getAllFootballUCL = async (req, res) => {
     }
 }
 
+//get all npfl news
 const NPFL = async (req, res) => {
     const limit = parseInt(req.query.limit);
-    //const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const getFootball = await Football.find({ category: "NPFL" })
         .select("-__v")
         .sort({ createdAt: -1 })
@@ -313,8 +315,8 @@ const NPFL = async (req, res) => {
     }
 }
 
+//get all serieA news
 const ItalianSirieA = async (req, res) => {
-    //const limit = req.query.limit ? parseInt(req.query.limit) : 9;
     const limit = parseInt(req.query.limit);
     const getFootball = await Football.find({ category: "Serie A" })
         .select("-__v")
@@ -334,6 +336,7 @@ const ItalianSirieA = async (req, res) => {
     }
 }
 
+//the search algorithm
 const generalSearch = async (req, res) => {
     const { query } = req.query;
     let searchCriteria = {};
