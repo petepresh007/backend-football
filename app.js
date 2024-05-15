@@ -17,6 +17,7 @@ const bet = require("./routers/bettips");
 mongoose.set('strictQuery', false);
 
 
+
 app.use(express.json());
 app.use(cooker_parser());
 app.use("/upload", express.static(path.join(__dirname, "upload")))
