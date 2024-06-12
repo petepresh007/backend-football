@@ -185,6 +185,7 @@ const getSingleUser = async (req, res) => {
     }
 }
 
+
 /**DO IT THE EASY WAY PROVIDED MAN IS LOGGED IN */
 const getSingUserID = async (req, res) => {
     const user = await User.findById(req.user.id).select("-password -confirmpassword -__v");
