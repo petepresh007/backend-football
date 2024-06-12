@@ -15,6 +15,7 @@ const footballRouter = require("./routers/football");
 const writeUp = require("./routers/landing");
 const bet = require("./routers/bettips");
 mongoose.set('strictQuery', false);
+const userRouter = require("./routers/user");
 
 
 
@@ -36,7 +37,8 @@ app.use('/api/v1/admin', adminRouter);
 app.use("/api/v1/football", footballRouter);
 app.use("/api/v1/landing", writeUp);
 app.use("/api/v1/football", footballRouter);
-app.use("/api/v1/bet", bet)
+app.use("/api/v1/bet", bet);
+app.use("/api/v1/client", userRouter);
 
 app.use(notFoundPage)
 app.use(errorHandler);

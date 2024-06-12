@@ -19,5 +19,27 @@ const auth = (req, res, next) => {
         throw new NotAuthorizedError("Not Authorized")
     }
 }
-
 module.exports = auth
+
+
+
+module.exports.AUTHTWOUSER = (req, res, next) => {
+    try {
+        const { user_token } = req.cookies;
+        if (user_token) {
+            JWT.verify(user_token, process.env.JWT_SECRET, {}, (err, decode) => {
+                if (err) {
+                    console.log("error verifying token", err);
+                    res.status(500).json({ msg: "errr, internal server error" })
+                } else {
+                    req.user = { username: decode.username, id: decode.userID, file: decode.file }
+                    next()
+                }
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        throw new NotAuthorizedError("Not authorized")
+    }
+}
+
